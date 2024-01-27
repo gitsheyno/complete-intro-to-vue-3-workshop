@@ -8,31 +8,40 @@
   </head>
   <body>
     <h1>Hello Wolrd</h1>
-    
+
     <div id="app">
-  
-        <p v-if="message.length ===0"> Even : {{message}}</p>
-        <p v-else="message.length === 1"> Odd : {{message}}</p>
-        <ul>
-          <li v-for="number in listOfNumbers">{{number}}</li>
-        </ul>
+      <p v-if="message.length ===0">Even : {{message}}</p>
+      <p v-else="message.length === 1">Odd : {{message}}</p>
+      <ul>
+        <li v-for="number in listOfNumbers">{{number}}</li>
+      </ul>
+      <div>
+        <label>Counter</label>
+        {{counter}}
+        <input type="number" v-model="enteredAmount" />
+        <button v-on:click="increment">Increase</button>
+      </div>
     </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js">
-    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
-      const {createApp} = Vue
+      const { createApp } = Vue;
 
       const app = createApp({
-        data(){
-          return{
-            message : 'Hello It Works',
-            listOfNumbers : [1,2,3,4,5]
-          }
-        }
-        
-      })
-      app.mount('#app')
+        data() {
+          return {
+            message: "Hello It Works",
+            listOfNumbers: [1, 2, 3, 4, 5],
+            counter: 0,
+            enteredAmount: 1,
+          };
+        },
+        methods: {
+          increment() {
+            this.counter += this.enteredAmount;
+          },
+        },
+      });
+      app.mount("#app");
     </script>
   </body>
 </html>
- 
